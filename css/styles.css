@@ -66,11 +66,14 @@
 #webchat {
   max-height: 600px;
   height: 600px;
-  box-shadow: 15px 5px 15px rgba(44, 44, 44, 0.363);
+  box-shadow: 15px 5px 15px rgba(44, 44, 44, 0.5);
 }
 
 .bg-primary {
   background-image: url("../assets/img/dhbw_wallpaper.png");
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: 100% 140%;
 }
 
 /* */
