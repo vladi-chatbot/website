@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <title>DHBW - VLADI Chatbot</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/Vladi.svg" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <script
+      crossorigin="anonymous"
+      src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"
+    ></script>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top">VLADI DHBW-Chatbot</a>
+                
+            </div>
+        </nav>
+ 
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container chatbot-container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h1 class="masthead-heading text-uppercase">DHBW CHATBOT</h1>
+                        <img class="masthead-avatar" src="assets/img/Vladi.png" alt="..." />
+                        
+                        <p class="masthead-subheading font-weight-light mb-0 underline-text">Stell mir irgendeine Frage!</p>
+                    </div>
+                
+                    <div class="col-md-6">
+                        <div id="webchat"></div>
+                        <script>        
+                            /**** Secret shouldn't be entered via the client; should happen on server-side (for this proof of concept it's fine) ****/
+                            (async function () {
+                                /**** directline-secret that has been automatically generated in the Azure Portal ****/
+                                const secret = 'oFxLvE9J7Yg.MQ0YwEMzK56ZEepm3rK3JOVgv0fUOgpw7Wf6Otlg3dI';
+                                /**** Create unique Token for a unique session ****/
+                                const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', { 
+                                        headers: {
+                                        Authorization: `Bearer ${secret}`,
+                                        },
+                                        method: 'POST'
+                                    });
+                                const { token } = await res.json();
+                                /**** Add some stylings, remove uploadButton and recall it down beneath @ window.WebChat.renderWebChat ****/
+                                const styleOptions = {
+                                    hideUploadButton: true,
+                                    bubbleBackground: 'rgba(227, 0, 19, .2)',
+                                    bubbleFromUserBackground: 'rgba(126, 138, 145, .2)'
+                                };                              
+                                const store = window.WebChat.createStore(
+                                {},
+                                /**** Send Message as soon as person entered the chat ****/
+                                ({ dispatch }) => next => action => {
+                                if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+                                    dispatch({
+                                    type: 'WEB_CHAT/SEND_EVENT',
+                                    payload: {
+                                        name: 'webchat/join',
+                                    }
+                                    });
+                                }
+                                return next(action);
+                                }
+                            );
+                            window.WebChat.renderWebChat({
+                                directLine: window.WebChat.createDirectLine({ token }),
+                                store, styleOptions
+                            }, document.getElementById('webchat'));
+
+                            document.querySelector('#webchat > *').focus();
+                            })().catch(err => console.error(err));
+
+
+
+                            /* Integrate the Chatbot with a universal Code --> There's only one Chat-Session at a time
+                              window.WebChat.renderWebChat(
+                              {
+                                  directLine: window.WebChat.createDirectLine({
+                                  token: 'oFxLvE9J7Yg.H2hmnp1YYf9hL3g4Dc0AG4Us_rVLOpjmqya1_W3HDJ8'
+                                }),
+                                userID: 'Af1240',
+                                username: 'Web Chat User',
+                                locale: 'de-de',
+                                styleOptions: {
+                                    hideUploadButton: true,
+                                    bubbleBackground: 'rgba(227, 0, 19, .2)',
+                                    bubbleFromUserBackground: 'rgba(126, 138, 145, .2)',
+                                }
+                              },
+                              document.getElementById('webchat')
+                            );
+                            */
+                            
+                          </script>
+                          
+                    </div>
+                </div>   
+                
+                
+            </div>
+                </div>
+            </div>
+        <!-- Copyright Bereich-->
+        <div class="copyright py-4 text-center text-white">
+                    <small>Braun/Eckert/Volk/Yildiz</small> <br>
+                    <small>Kurs: WWI2018C</small> <br>
+                    <small>Betreuung: Prof. Dr. Raymond Bimazubute</small> <br>
+        </div>
+    </div>
+        
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS
+        <script src="js/scripts.js"></script>-->
+        
+    </body>
+</html>
