@@ -32,7 +32,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-6">
                         <h1 class="masthead-heading text-uppercase">DHBW CHATBOT</h1>
-                        <img class="masthead-avatar" src="assets/img/Vladi.png" alt="..." />
+                        <img class="masthead-avatar" src="assets/img/Vladi.png" alt="Vladi Chatbot" />
                         
                         <p class="masthead-subheading font-weight-light mb-0 underline-text">Stell mir irgendeine Frage!</p>
                     </div>
@@ -60,7 +60,7 @@
                                 };                              
                                 const store = window.WebChat.createStore(
                                 {},
-                                /**** Send Message as soon as person entered the chat ****/
+                                /**** Send Message as soon as person enters the chat ****/
                                 ({ dispatch }) => next => action => {
                                 if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
                                     dispatch({
