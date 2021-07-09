@@ -6,11 +6,10 @@
         <title>DHBW - VLADI Chatbot</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/img/Vladi.svg" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Bootstrap-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Montserrat Font-->
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
         <script
@@ -81,27 +80,6 @@
                             document.querySelector('#webchat > *').focus();
                             })().catch(err => console.error(err));
 
-
-
-                            /* Integrate the Chatbot with a universal Code --> There's only one Chat-Session at a time
-                              window.WebChat.renderWebChat(
-                              {
-                                  directLine: window.WebChat.createDirectLine({
-                                  token: 'oFxLvE9J7Yg.H2hmnp1YYf9hL3g4Dc0AG4Us_rVLOpjmqya1_W3HDJ8'
-                                }),
-                                userID: 'Af1240',
-                                username: 'Web Chat User',
-                                locale: 'de-de',
-                                styleOptions: {
-                                    hideUploadButton: true,
-                                    bubbleBackground: 'rgba(227, 0, 19, .2)',
-                                    bubbleFromUserBackground: 'rgba(126, 138, 145, .2)',
-                                }
-                              },
-                              document.getElementById('webchat')
-                            );
-                            */
-                            
                           </script>
                           
                     </div>
@@ -118,11 +96,5 @@
                     <small>Betreuung: Prof. Dr. Raymond Bimazubute</small> <br>
         </div>
     </div>
-        
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS
-        <script src="js/scripts.js"></script>-->
-        
     </body>
 </html>
